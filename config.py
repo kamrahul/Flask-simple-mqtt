@@ -10,3 +10,8 @@ class Config(object):
     MQTT_PASSWORD=""
     MQTT_KEEPALIVE=5
     MQTT_TLS_ENABLED=False
+
+    # Celery Configuration 
+    BROKER_URL ="redis://redis:6379/0"
+    CELERY_RESULT_BACKEND ="redis://redis:6379/0"
+    CELERY_DEFAULT_QUEUE ="test_queue"

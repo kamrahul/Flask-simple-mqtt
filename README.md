@@ -22,6 +22,7 @@ venv\Scripts\Activate.ps1
 ## requirement.txt
 ### -  Create requirements.txt file
 ### - Add flask as primary requirement
+### - celery==5.2.7 , redis
 
 ##  install the modules in your requirements.txt file
 

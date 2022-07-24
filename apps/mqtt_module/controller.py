@@ -3,7 +3,7 @@ from flask import Blueprint, request, jsonify,current_app
 import os
 from flask_mqtt import Mqtt
 from apps.factory import mqtt as mqtt_client
-from apps.factory import device_id
+from apps.factory import device_id ,celery
 
 
 # setting up blueprint
@@ -46,3 +46,18 @@ def publish_message():
 def print_message():
     print("MESSAGE RECEIVED",flush=True)
     return jsonify({})
+
+
+@mqtt_broker.route('/push_task',methods=['GET'])
+def push_task(**kwargs):
+
+
+    #setting up logs
+    current_app.logger.info(request.json)
+
+    #setting up task
+    result = celery.send_task('worker_name',kwargs={"test":123},queue="test_que")
+
+    #send response as json
+    return jsonify({'task_id': result.task_id})
+
