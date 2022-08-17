@@ -26,19 +26,19 @@ services:
         
         ports:
             - "5000:5000"
-    # beat:
-    #     container_name: flask_service_beat
-    #     build: 
-    #         context: .
-    #         dockerfile: Dockerfile.celeryBeat
-    #     networks:
-    #         - my-network
-    #     environment:
-    #         - CELERY_TYPE=beat
-    #         - DEVICE_NAME=kin123
+    beat:
+        container_name: flask_mqtt_beat
+        build: 
+            context: .
+            dockerfile: Dockerfile.celeryBeat
+        networks:
+            - my-network
+        environment:
+            - CELERY_TYPE=beat
+            - DEVICE_NAME=kin123
         
-    #     ports:
-    #         - "5001:5000"
+        ports:
+            - "5001:5000"
     redis:
         image: redis:latest
         container_name: redis-mqtt

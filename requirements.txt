@@ -3,3 +3,4 @@ flask-mqtt==1.1.1
 gunicorn==20.1.0
 celery==5.2.7
 redis
+requests
